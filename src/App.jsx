@@ -10,12 +10,18 @@ import appStore from "./utils/appStore";
 import ForgotPassword from "./components/ForgotPassword";
 import ResetPassword from "./components/ResetPassword";
 import Welcome from "./components/Welcome";
+import SharedPreview from "./components/SharedPreview";
 
 function App() {
   return (
     <>
       <Provider store={appStore}>
-        <BrowserRouter basename="/">
+        <BrowserRouter
+          future={{
+            v7_startTransition: true,
+          }}
+          basename="/"
+        >
           <Routes>
             <Route path="/" element={<Body />}>
               <Route path="/" element={<Welcome />} />
@@ -26,8 +32,13 @@ function App() {
               <Route path="/error" element={<Error />} />
               <Route path="/forgotpassword" element={<ForgotPassword />} />
               <Route path="/resetpassword/:token" element={<ResetPassword />} />
+              <Route
+                path="/preview/:username/shared"
+                element={<SharedPreview />}
+              />
             </Route>
           </Routes>
+          <Routes></Routes>
         </BrowserRouter>
       </Provider>
     </>

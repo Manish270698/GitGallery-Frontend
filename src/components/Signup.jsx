@@ -1,16 +1,16 @@
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import axios from "axios";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { motion } from "framer-motion";
-import { animate } from "motion";
+import { addCurrentUser } from "../utils/currrentUserSlice";
 
 const Signup = () => {
   const dispatch = useDispatch();
-  const [githubUserName, setGithubUserName] = useState("");
+  const [userName, setUserName] = useState("");
   const [name, setName] = useState("");
   const [emailId, setEmailId] = useState("");
   const [password, setPassword] = useState("");
@@ -29,15 +29,21 @@ const Signup = () => {
       const data = await axios.post(
         BASE_URL + "/signup",
         {
-          githubUserName,
+          userName,
           name,
           emailId,
           password,
-          sills: [skills],
+          skills: skills.split(",").map((skill) => skill.trim()),
         },
         { withCredentials: true }
       );
       dispatch(addUser(data.data.user));
+      dispatch(
+        addCurrentUser({
+          currentName: data?.data?.user?.name,
+          currentTopSkills: data?.data?.user?.skills,
+        })
+      );
       navigate("/repos");
       console.log(data.data.user);
     } catch (err) {
@@ -56,14 +62,14 @@ const Signup = () => {
         >
           <div className="mb-4 lg:mb-5">
             <label className="block mb-2" htmlFor="username">
-              Github username *
+              Username *
             </label>
             <input
-              id="githubUserName"
-              name="githubUserName"
+              id="userName"
+              name="userName"
               type="text"
-              value={githubUserName}
-              onChange={(e) => setGithubUserName(e.target.value)}
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
               placeholder=""
               className="block font-light bg-[#0d1117] p-2 border-text w-96 focus:outline-none rounded-md border-[0.5px] border-[#465a7e]/40"
             ></input>

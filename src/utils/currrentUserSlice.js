@@ -8,7 +8,7 @@ const currentUserSlice = createSlice({
       return action.payload;
     },
     removeCurrentUser: (state, action) => {
-      return { currentName: "" };
+      return null;
     },
   },
 });

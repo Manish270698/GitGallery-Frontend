@@ -1,18 +1,92 @@
 import { GlobeAltIcon, StarIcon } from "@heroicons/react/24/outline";
 import { github } from "../assets/index";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Menu from "./Menu";
 import Shareable from "./Shareable";
-import Instructions from "./Instructions";
+import { BASE_URL } from "../utils/constants";
+import axios from "axios";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { addRepo } from "../utils/repoSlice";
+import { addCurrentRepo } from "../utils/currentRepoSlice";
+import { addUser } from "../utils/userSlice";
+import { addCurrentUser } from "../utils/currrentUserSlice";
 
-const Preview = () => {
+const SharedPreview = () => {
+  const { username } = useParams();
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const user = useSelector((store) => store.currentUser);
   const repos = useSelector((store) => store.currentRepo);
+
+  const getRepoData = async () => {
+    try {
+      const repoData = await axios.get(`${BASE_URL}/user/${username}/view`, {
+        withCredentials: true,
+      });
+
+      if (repoData.data.data.length === 0) {
+        alert(`No public repositories found for username: ${username}`);
+        return;
+      }
+
+      // Add position as array index
+      const reposWithPosition = repoData.data.data.map((repo, index) => ({
+        ...repo,
+        position: index, // Assign position as array index
+      }));
+
+      dispatch(addCurrentRepo(reposWithPosition));
+    } catch (err) {
+      const errorMsg = err?.response?.data?.ERROR || "An error occurred.";
+      setError(errorMsg);
+      alert(errorMsg);
+    }
+  };
+
+  const fetchUser = async () => {
+    try {
+      const data = await axios.get(`${BASE_URL}/user/${username}/shared`, {
+        withCredentials: true,
+      });
+      console.log(data);
+      if (data.data.data.repoData.length > 0) {
+        console.log(data.data);
+        dispatch(
+          addCurrentUser({
+            currentName: data.data.data.name,
+            currentTopSkills: data.data.data.skills,
+          })
+        );
+        dispatch(addCurrentRepo(data.data.data.repoData));
+      }
+    } catch (err) {
+      if (err.status === 401) {
+        console.log("path: ", path);
+        navigate(path);
+      } else if (err.status === 404) {
+        console.log("hello");
+        dispatch(
+          addCurrentUser({
+            currentName: username,
+            currentTopSkills: [],
+          })
+        );
+        await getRepoData();
+      } else {
+        navigate("/error");
+      }
+    }
+  };
+
+  const location = window.location.href;
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
   return (
-    <div className="bg-[#0d1117] min-h-screen">
-      <Menu />
-      <Shareable />
-      <Instructions />
+    <div className="bg-[#0d1117] min-h-screen pt-28 lg:pt-36">
       {user ? (
         <>
           <div className="profile bg-[#0d1117] flex justify-center pb-4">
@@ -39,7 +113,7 @@ const Preview = () => {
 
               <div className="flex-1 flex flex-wrap px-6 py-3 lg:px-8 gap-2 lg:py-4 rounded-t-2xl text-base lg:text-xl items-center">
                 <p>Top Skills:&nbsp;</p>
-                {user.currentTopSkills.map((skill, i) => (
+                {user?.currentTopSkills?.map((skill, i) => (
                   <span
                     className="text-base border-[1px] w-auto py-1 px-3 rounded-xl"
                     key={i}
@@ -52,7 +126,7 @@ const Preview = () => {
           </div>
           <div className="bg-[#0d1117] min-h-screen flex flex-col items-center pb-2 overflow-clip">
             <div className="w-[90%] md:w-[65%] xl:w-[55%] bg-[#010409] border-2 border-[#7c8493]/40 flex flex-col gap-4 rounded-2xl p-2 lg:p-4">
-              {repos.map(
+              {repos?.map(
                 (repo) =>
                   repo.visible && (
                     <div
@@ -138,4 +212,4 @@ const Preview = () => {
   );
 };
 
-export default Preview;
+export default SharedPreview;

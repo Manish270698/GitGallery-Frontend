@@ -37,7 +37,7 @@ const ForgotPassword = () => {
         >
           <div className="mb-4 lg:mb-5">
             <label className="block mb-2" htmlFor="username">
-              Github username or email address
+              Username or email address
             </label>
             <input
               id="username"

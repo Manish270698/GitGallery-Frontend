@@ -1,20 +1,19 @@
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import axios from "axios";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { motion } from "framer-motion";
-import { animate } from "motion";
 import { addCurrentUser } from "../utils/currrentUserSlice";
 import { addRepo } from "../utils/repoSlice";
 import { addCurrentRepo } from "../utils/currentRepoSlice";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const [username, setUsername] = useState("Manish270698");
-  const [password, setPassword] = useState("Manish@123");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [visible, setVisible] = useState(false);
   const navigate = useNavigate();
@@ -29,7 +28,7 @@ const Login = () => {
       const user = await axios.post(
         BASE_URL + "/login",
         {
-          username,
+          username: username,
           password,
         },
         { withCredentials: true }
@@ -42,7 +41,7 @@ const Login = () => {
       dispatch(addUser(user.data.user));
       dispatch(
         addCurrentUser({
-          currentGithubUserName: user.data.user.githubUserName,
+          currentUserName: user.data.user.userName,
           currentName: user.data.user.name,
           currentEmailId: user.data.user.emailId,
           currentTopSkills: user.data.user.skills,
@@ -67,7 +66,7 @@ const Login = () => {
         >
           <div className="mb-4 lg:mb-5">
             <label className="block mb-2" htmlFor="username">
-              Github username or email address
+              Username or email address
             </label>
             <input
               id="username"

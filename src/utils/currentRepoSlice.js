@@ -8,7 +8,7 @@ const CurrenRepoSlice = createSlice({
       return action.payload;
     },
     removeCurrentRepo: (state, action) => {
-      return { name: "" };
+      return null;
     },
   },
 });
