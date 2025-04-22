@@ -28,7 +28,6 @@ const ResetPassword = () => {
         setError(null);
         setResponse(data?.data?.message);
       } else if (password !== confirmPassword) {
-        console.log(password, confirmPassword);
         setError("Passwords don't match!");
       }
     } catch (err) {

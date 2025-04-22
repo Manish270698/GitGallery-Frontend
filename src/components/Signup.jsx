@@ -45,7 +45,6 @@ const Signup = () => {
         })
       );
       navigate("/repos");
-      console.log(data.data.user);
     } catch (err) {
       setError(err?.response?.data?.ERROR);
     }

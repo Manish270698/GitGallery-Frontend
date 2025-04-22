@@ -61,7 +61,6 @@ const SearchRepo = () => {
       }));
 
       dispatch(addCurrentRepo(reposWithPosition));
-      console.log(currentName, name);
       dispatch(
         addCurrentUser({
           currentName:

@@ -40,6 +40,7 @@ const Navbar = () => {
       dispatch(removeRepo());
       dispatch(removeCurrentRepo());
       dispatch(removeCurrentUser());
+      navigate("/login");
     } catch (err) {
       navigate("/error");
     }

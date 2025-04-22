@@ -6,7 +6,6 @@ const Menu = () => {
   const [path, setPath] = useState(location.pathname);
   useEffect(() => {
     setPath(location.pathname);
-    console.log(location.pathname);
   }, [location.pathname]);
   return (
     <nav className="top-12 lg:top-16 fixed w-screen backdrop-blur-md bg-[#0d1117] pb-4">

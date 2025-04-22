@@ -84,7 +84,6 @@ const Profile = () => {
                   setName(e.target.value);
                 }}
                 onBlur={() => {
-                  console.log("Blurred");
                   setNameVis(true);
                   saveProfileData();
                 }}

@@ -31,7 +31,6 @@ const Body = () => {
       setError(null);
     } catch (err) {
       setError(err?.response?.data?.ERROR);
-      console.log("error from body");
       alert(error);
     }
   };
@@ -42,7 +41,6 @@ const Body = () => {
         const user = await axios.get(BASE_URL + "/profile/view", {
           withCredentials: true,
         });
-        console.log("user: ", user);
         await getLoggedData();
         if (user) {
           // const userData = {
@@ -64,7 +62,6 @@ const Body = () => {
         }
       } catch (err) {
         if (err.status === 401) {
-          console.log("path: ", path);
           navigate(path);
         } else {
           navigate("/error");

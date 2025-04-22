@@ -50,9 +50,7 @@ const SharedPreview = () => {
       const data = await axios.get(`${BASE_URL}/user/${username}/shared`, {
         withCredentials: true,
       });
-      console.log(data);
       if (data.data.data.repoData.length > 0) {
-        console.log(data.data);
         dispatch(
           addCurrentUser({
             currentName: data.data.data.name,
@@ -63,10 +61,8 @@ const SharedPreview = () => {
       }
     } catch (err) {
       if (err.status === 401) {
-        console.log("path: ", path);
         navigate(path);
       } else if (err.status === 404) {
-        console.log("hello");
         dispatch(
           addCurrentUser({
             currentName: username,
