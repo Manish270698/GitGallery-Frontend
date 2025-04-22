@@ -86,7 +86,7 @@ const RepoCard = ({ data }) => {
             repoName
           )}
         </label>
-        <div className="flex gap-1 w-[10%]" title="starred">
+        <div className="flex gap-1 w-[10%]" title="stars">
           <StarIcon className="size-5" /> {data?.stars}
         </div>
         <div
