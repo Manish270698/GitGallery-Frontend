@@ -47,7 +47,9 @@ const Navbar = () => {
   };
 
   const handleOutsideClick = (e) => {
-    setToggle(true);
+    if (navRef.current && !navRef.current.contains(e.target)) {
+      setToggle(true);
+    }
   };
 
   useEffect(() => {
