@@ -7,7 +7,14 @@ import Profile from "./Profile";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { addCurrentRepo } from "../utils/currentRepoSlice";
 import { CurrentContext } from "./context/CurrentContext";
-import { DndContext, closestCenter } from "@dnd-kit/core";
+import {
+  DndContext,
+  closestCenter,
+  MouseSensor,
+  TouchSensor,
+  useSensor,
+  useSensors,
+} from "@dnd-kit/core";
 import {
   arrayMove,
   SortableContext,
@@ -22,6 +29,11 @@ const Repos = () => {
   const user = useSelector((store) => store?.currentUser);
   const [topSkillset, setTopSkillset] = useState([]);
   const [name, setName] = useState(null);
+
+  const mouseSensor = useSensor(MouseSensor);
+  const touchSensor = useSensor(TouchSensor);
+
+  const sensors = useSensors(mouseSensor, touchSensor);
 
   // Function to add a new repo
   const handleAddNewRepo = () => {
@@ -60,7 +72,7 @@ const Repos = () => {
     <div className="bg-[#0d1117] min-h-screen">
       <Menu />
       <CurrentContext.Provider
-        value={{ topSkillset, setTopSkillset, name, setName}}
+        value={{ topSkillset, setTopSkillset, name, setName }}
       >
         <SearchRepo />
         <Instructions />
@@ -81,6 +93,7 @@ const Repos = () => {
 
             {repoData ? (
               <DndContext
+                sensors={sensors}
                 collisionDetection={closestCenter}
                 onDragEnd={handleDragEnd}
               >
