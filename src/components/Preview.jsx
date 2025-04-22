@@ -11,6 +11,7 @@ const Preview = () => {
   return (
     <div className="bg-[#0d1117] min-h-screen">
       <Menu />
+      {!user && <div className="pt-28 lg:pt-36 px-10 pb-4 lg:px-20 mx-auto w-[90%] lg:w-[60%] flex justify-center items-center"></div>}
       <Shareable />
       <Instructions />
       {user ? (
