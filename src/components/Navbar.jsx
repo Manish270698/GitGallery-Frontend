@@ -78,8 +78,10 @@ const Navbar = () => {
       <div className="sm:relative flex-1 flex justify-start lg:hidden">
         <div>
           {user?.currentName
-            ? user?.currentName?.substring(0, 20)
-            : user?.currentUserName?.substring(0, 20)}
+            ? user?.currentName?.substring(0, 10) + "..."
+            : user?.currentUserName?.substring(0, 10)
+            ? user?.currentUserName?.substring(0, 10) + "..."
+            : ""}
         </div>
       </div>
       <motion.div
