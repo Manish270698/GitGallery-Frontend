@@ -85,7 +85,7 @@ const Body = () => {
           <ScrollToTop />
           <Outlet />
         </InstructionsContext.Provider>
-        <Footer />
+        {location.pathname !== "/" && <Footer />}
       </div>
     </>
   );
