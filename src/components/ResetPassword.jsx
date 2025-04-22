@@ -51,7 +51,7 @@ const ResetPassword = () => {
             <input
               id="password"
               name="password"
-              type="text"
+              type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder=""
