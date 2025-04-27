@@ -71,7 +71,7 @@ const FAQ = () => {
                 Contact Us
               </a>{" "}
               page, or via email at{" "}
-              <span className="font-semibold">support@gitgallery.com</span>.
+              <span className="font-semibold">gitgallery0@gmail.com</span>.
             </p>
           </div>
         </div>
