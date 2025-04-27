@@ -4,12 +4,14 @@ const FAQ = () => {
   return (
     <div className="bg-[#0D1117] text-[#f0f6fc] px-8 py-16 min-h-screen pt-28">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-semibold mb-6 text-center">
+        <h1 className="text-2xl lg:text-4xl font-semibold mb-6 text-center">
           Frequently Asked Questions
         </h1>
         <div className="space-y-6">
           <div>
-            <h2 className="text-2xl font-semibold">1. What is GitGallery?</h2>
+            <h2 className="text-lg lg:text-2xl font-semibold">
+              1. What is GitGallery?
+            </h2>
             <p>
               GitGallery is a platform designed to showcase GitHub repositories
               in an elegant and user-friendly way. It allows developers to
@@ -18,7 +20,7 @@ const FAQ = () => {
           </div>
 
           <div>
-            <h2 className="text-2xl font-semibold">
+            <h2 className="text-lg lg:text-2xl font-semibold">
               2. How do I add my GitHub repositories to GitGallery?
             </h2>
             <p>
@@ -28,7 +30,7 @@ const FAQ = () => {
           </div>
 
           <div>
-            <h2 className="text-2xl font-semibold">
+            <h2 className="text-lg lg:text-2xl font-semibold">
               3. What types of payments do you accept for donations?
             </h2>
             <p>
@@ -39,7 +41,7 @@ const FAQ = () => {
           </div>
 
           <div>
-            <h2 className="text-2xl font-semibold">
+            <h2 className="text-lg lg:text-2xl font-semibold">
               4. Is my information safe on GitGallery?
             </h2>
             <p>
@@ -50,7 +52,7 @@ const FAQ = () => {
           </div>
 
           <div>
-            <h2 className="text-2xl font-semibold">
+            <h2 className="text-lg lg:text-2xl font-semibold">
               5. Can I use GitGallery on mobile devices?
             </h2>
             <p>
@@ -60,7 +62,7 @@ const FAQ = () => {
           </div>
 
           <div>
-            <h2 className="text-2xl font-semibold">
+            <h2 className="text-lg lg:text-2xl font-semibold">
               6. How can I contact the GitGallery team?
             </h2>
             <p>

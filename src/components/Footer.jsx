@@ -1,9 +1,11 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 
 const Footer = () => {
   const location = useLocation(); // Get the current path
   const isRootPage = location.pathname === "/"; // Check if it's the root page
+  const user = useSelector((state) => state.user?.name);
 
   return (
     <div className={`${!isRootPage ? "bg-[#0D1117]" : ""} text-[#f0f6fc] py-8`}>
@@ -35,7 +37,7 @@ const Footer = () => {
         {/* Right Section */}
         <div className="flex flex-col space-y-4 text-right">
           <Link
-            to="/donate"
+            to={user ? "/donate" : "/login"}
             className="hover:text-white text-sm lg:text-md text-[#5e5f61]"
           >
             Donate
