@@ -54,6 +54,12 @@ const Footer = () => {
           >
             FAQ
           </Link>
+          <Link
+            to="/refunds"
+            className="hover:text-white text-sm lg:text-md text-[#5e5f61]"
+          >
+            Refund Policy
+          </Link>
         </div>
       </div>
 

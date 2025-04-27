@@ -17,6 +17,7 @@ import FAQ from "./components/FAQ";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsConditions from "./components/TermsConditions";
 import DonateUs from "./components/DonateUs";
+import RefundPolicy from "./components/RefundPolicy";
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/terms" element={<TermsConditions />} />
               <Route path="/donate" element={<DonateUs />} />
+              <Route path="/refunds" element={<RefundPolicy />} />
             </Route>
           </Routes>
           <Routes></Routes>
