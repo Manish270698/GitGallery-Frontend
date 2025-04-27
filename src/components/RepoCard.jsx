@@ -63,7 +63,7 @@ const RepoCard = ({ data }) => {
       {/* Repo Name */}
       <div className="flex items-center gap-2 w-full">
         <div
-          className="text-lg font-bold cursor-pointer flex-1 break-words"
+          className="text-lg font-bold cursor-pointer flex-1 w-[75%] break-words"
           onDoubleClick={() => {
             setEditField("repoName");
             setListenerNeeded(false);
