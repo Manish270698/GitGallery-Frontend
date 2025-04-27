@@ -62,8 +62,8 @@ const RepoCard = ({ data }) => {
     >
       {/* Repo Name */}
       <div className="flex items-center gap-2 w-full">
-        <label
-          className="text-lg font-bold cursor-pointer flex-1"
+        <div
+          className="text-lg font-bold cursor-pointer flex-1 break-words"
           onDoubleClick={() => {
             setEditField("repoName");
             setListenerNeeded(false);
@@ -85,10 +85,22 @@ const RepoCard = ({ data }) => {
           ) : (
             repoName
           )}
-        </label>
-        <div className="flex gap-1 w-[10%]" title="stars">
-          <StarIcon className="size-5" /> {data?.stars}
         </div>
+        <div
+          className="flex items-center gap-1 w-auto lg:w-[10%]"
+          title="stars"
+        >
+          <div className="flex-shrink-0">
+            <StarIcon className="w-5 h-5" />
+          </div>
+          <span className="text-sm whitespace-nowrap">{data?.stars}</span>
+        </div>
+        {/* <div className="flex items-center gap-2 w-auto" title="stars">
+          <div className="flex-shrink-0">
+            <StarIcon className="w-5 h-5" />
+          </div>
+          <span className="text-sm whitespace-nowrap">{data?.stars}</span>
+        </div> */}
         <div
           onMouseEnter={() => setListenerNeeded(false)}
           onMouseLeave={() => setListenerNeeded(true)}
@@ -97,6 +109,7 @@ const RepoCard = ({ data }) => {
             const updatedVisibility = !data?.visible;
             handleSave({ visible: updatedVisibility });
           }}
+          className="w-[5%]"
         >
           {data?.visible ? (
             <EyeIcon title="visible" className="size-5 cursor-pointer" />

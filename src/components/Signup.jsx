@@ -51,8 +51,8 @@ const Signup = () => {
   };
 
   return (
-    <div className=" min-h-screen bg-[#0d1117] text-[#f0f6fc]">
-      <div className="pt-28 lg:pt-36 flex justify-center ">
+    <div className="min-h-screen bg-[#0d1117] text-[#f0f6fc]">
+      <div className="pt-28 lg:pt-36 flex justify-center">
         <motion.form
           className="bg-[#151b23] p-8 rounded-xl border-[0.5px] border-[#465a7e]/40"
           initial={{ scale: 0 }}
