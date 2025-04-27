@@ -11,6 +11,12 @@ import ForgotPassword from "./components/ForgotPassword";
 import ResetPassword from "./components/ResetPassword";
 import Welcome from "./components/Welcome";
 import SharedPreview from "./components/SharedPreview";
+import About from "./components/AboutUs";
+import ContactUs from "./components/ContactUs";
+import FAQ from "./components/FAQ";
+import PrivacyPolicy from "./components/PrivacyPolicy";
+import TermsConditions from "./components/TermsConditions";
+import DonateUs from "./components/DonateUs";
 
 function App() {
   return (
@@ -36,6 +42,12 @@ function App() {
                 path="/preview/:username/shared"
                 element={<SharedPreview />}
               />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<ContactUs />} />
+              <Route path="/faq" element={<FAQ />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/terms" element={<TermsConditions />} />
+              <Route path="/donate" element={<DonateUs />} />
             </Route>
           </Routes>
           <Routes></Routes>
