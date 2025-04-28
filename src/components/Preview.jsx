@@ -109,13 +109,13 @@ const Preview = () => {
                         </div>
 
                         {repo?.description && (
-                          <div className="px-6 py-2 lg:px-8">
+                          <div className="py-2 lg:px-8 lg:py-4 break-words">
                             {repo?.description}
                           </div>
                         )}
 
                         {repo?.repoSkills?.length > 0 && (
-                          <div className="px-6 py-3 lg:px-8 lg:py-4">
+                          <div className="py-2 lg:px-8 lg:py-4 break-words">
                             Skills:&nbsp;&nbsp;
                             {repo?.repoSkills?.map((skill) => (
                               <span key={skill._id}>
