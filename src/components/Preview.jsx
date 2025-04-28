@@ -109,7 +109,9 @@ const Preview = () => {
                         </div>
 
                         {repo?.description && (
-                          <div className="py-2">{repo?.description}</div>
+                          <div className="px-6 py-2 lg:px-8">
+                            {repo?.description}
+                          </div>
                         )}
 
                         {repo?.repoSkills?.length > 0 && (
