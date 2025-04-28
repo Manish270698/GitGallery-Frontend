@@ -11,7 +11,9 @@ const Preview = () => {
   return (
     <div className="bg-[#0d1117] min-h-screen">
       <Menu />
-      {!user && <div className="pt-28 lg:pt-36 px-10 pb-4 lg:px-20 mx-auto w-[90%] lg:w-[60%] flex justify-center items-center"></div>}
+      {!user && (
+        <div className="pt-28 lg:pt-36 px-10 pb-4 lg:px-20 mx-auto w-[90%] lg:w-[60%] flex justify-center items-center"></div>
+      )}
       <Shareable />
       <Instructions />
       {user ? (
@@ -60,12 +62,12 @@ const Preview = () => {
                       key={repo._id}
                       className="flex flex-col border-2 border-[#7c8493] rounded-2xl"
                     >
-                      <div className="card p-2 lg:p-3 flex flex-col bg-[#0d1117] rounded-2xl">
-                        <div className="flex flex-1 gap-5 justify-between items-center px-6 py-3 lg:px-8 lg:py-4">
-                          <p className="text-base lg:text-lg w-[70%] overflow-clip font-bold">
+                      <div className="card px-6 py-3 lg:px-4 flex flex-col bg-[#0d1117] rounded-2xl">
+                        <div className="flex flex-1 gap-[2%] justify-between items-center py-2 lg:px-8 lg:py-4">
+                          <p className="text-base lg:text-lg w-[59%] break-words font-bold">
                             {repo.repoName}
                           </p>
-                          <div className="w-[10%] flex justify-center">
+                          <div className="w-[9%] flex justify-center">
                             {repo.deployedLink && (
                               <a
                                 href={repo.deployedLink}
@@ -78,7 +80,7 @@ const Preview = () => {
                               </a>
                             )}
                           </div>
-                          <div className="w-[10%] flex justify-center">
+                          <div className="w-[9%] flex justify-center">
                             {repo.repositoryLink && (
                               <a
                                 href={repo.repositoryLink}
@@ -94,7 +96,7 @@ const Preview = () => {
                               </a>
                             )}
                           </div>
-                          <div className="w-[10%] flex justify-center">
+                          <div className="w-[19%] flex justify-center break-words">
                             <div className="flex gap-1" title="stars">
                               {repo?.stars > 0 && (
                                 <>
@@ -107,9 +109,7 @@ const Preview = () => {
                         </div>
 
                         {repo?.description && (
-                          <div className="px-6 py-2 lg:px-8">
-                            {repo?.description}
-                          </div>
+                          <div className="py-2">{repo?.description}</div>
                         )}
 
                         {repo?.repoSkills?.length > 0 && (

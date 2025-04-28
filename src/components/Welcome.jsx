@@ -17,7 +17,7 @@ const Welcome = () => {
             </div>
           </div>
           <div className="mt-8 mb-4 lg:mb-5 text-lg md:text-xl flex justify-center">
-            <div className="flex flex-wrap gap-8 justify-center items-center w-[85%] lg:w-[60%]">
+            <div className="flex flex-wrap gap-8 xl:gap-14 justify-center items-center w-[85%] lg:w-[60%]">
               <Link to="/repos">
                 <button
                   className="bg-[#238636] px-6 py-2 lg:px-8 lg:py-3 rounded-md border-[3px] hover:bg-[#165120] border-[#f0f1fc] shadow-3xl"
