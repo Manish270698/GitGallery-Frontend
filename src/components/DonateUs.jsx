@@ -34,11 +34,12 @@ const DonateUs = () => {
             <button
               type="submit"
               className="w-full bg-[#0366d6] text-white py-2 px-4 rounded-md font-semibold hover:bg-[#024aad]"
-              onClick={() =>
+              onClick={(event) => {
+                event.preventDefault();
                 alert(
                   "Payment service is down right now. Thanks for your understanding."
-                )
-              }
+                );
+              }}
             >
               Donate Now
             </button>
